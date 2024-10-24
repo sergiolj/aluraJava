@@ -61,11 +61,15 @@ public class ExercCap3 {
 	// Exercício 1 imprima os números de 150 a 300
 	public static void numerosDoIntervalo(int menorNumSequencia, int maiorNumSequencia) {
 		System.out.println("Sequencia de "+menorNumSequencia+" até "+maiorNumSequencia);
+		System.out.print("[");
 		for(int i=menorNumSequencia;i<=maiorNumSequencia;i++) {
 			if(i<maiorNumSequencia) {
 				System.out.print(i+"-");
+				if(i % 20==0) {
+					System.out.println();
+				}
 			}else {
-				System.out.println(i);
+				System.out.println(i+"]");
 			}
 		}
 	}
@@ -88,6 +92,9 @@ public class ExercCap3 {
 		for(int i=menorIntervalo ; i<=maiorIntervalo ; i++) {
 			if(i<maiorIntervalo) {
 				System.out.print((multiplo*i)+";");
+				if(i% 20==0) {
+					System.out.println();
+				}
 			}else {
 				System.out.println(multiplo*i+"}");
 			}							

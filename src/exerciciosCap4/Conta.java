@@ -10,28 +10,45 @@ package exerciciosCap4;
 public class Conta {
 	int numero;
 	String agencia;
-	Cliente primeiroTitular;
+	Cliente primeiroTitular=new Cliente();
 	Cliente segundoTitular;
-	String dataAbertura;
+	Data abertura;
 	double saldo;
-	Gerente gerente;
+	Gerente gerente=new Gerente();
 	ContaEspecial contaEspecial;
 	ContaPoupanca contaPoupanca;
 
-	public void sacar(double valor) {
-
+	public boolean sacar(double valor) {
+		if(this.saldo >= valor) {
+			this.saldo -= valor;
+			System.out.println("\nSaque efetuado com sucesso");
+			return true;
+		}else {
+			System.out.println("\nSaldo insuficiente para efetuar operação");
+			return false;
+		}
 	}
 
-	public void depositar(double valor) {
-
+	public void depositarValores(double valor) {
+		this.saldo += valor;
 	}
 
 	public void consultarSaldo() {
-
+		System.out.println("Seu saldo atual é de R$: "+this.saldo);
 	}
 
 	public void transferirValores(Conta numero, double valor) {
-
+		if(this.sacar(valor)) {
+			numero.depositarValores(valor);
+			System.out.println("Transferência efetuada com sucesso!");
+		}
+	}
+	public void consultarDadosConta() {
+		System.out.println("\nAgência: "+this.agencia);
+		System.out.println("Número da cta: "+this.numero);
+		System.out.println("Primeiro Titular: "+this.primeiroTitular.nome);
+		System.out.println("Gerente: "+this.gerente.nome);
+		System.out.println("Abertura da conta: "+this.abertura.data);
 	}
 
 }

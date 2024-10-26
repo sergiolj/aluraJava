@@ -8,4 +8,7 @@ public class PessoaFisica {
 	String telefone;
 	String endereco;
 
+	public void listarAtributos() {
+
+	}
 }

@@ -9,18 +9,19 @@ package capitulo5_1;
  */
 
 public class Conta {	
-	private int numero;
+	private int numeroConta;
 	private Cliente titular;
 	private double saldo;
 	private double limite;
+	private static int idConta=1;
 	
 	/*
 	 * declarar um objeto como static quer dizer que ele não é um atributo
-	 * de instância mas sim um atributo de objeto
+	 * de instância mas sim um atributo de CLASSE
 	 * para acessar esse objeto se usa o 
 	 * NOME DA CLASSE.AtributoEstático ao invés de this.
 	 */
-	private static int totalDeContas;
+	private static int totalDeContas=0;
 
 	//CONSTRUTOR
 	/*
@@ -34,23 +35,38 @@ public class Conta {
 	 * */
 	
 	Conta(){
-		Conta.totalDeContas += 1;
+		this.numeroConta = criarIdentificadorConta();
 	}
 	Conta (Cliente titular){
+		this.numeroConta = criarIdentificadorConta();
 		this.titular=titular;
 		
 	}
 	Conta(int numero, Cliente titular){
-		this(titular); //posso chamar um construtor dentro de outro
-		this.numero=numero;
+		this.numeroConta = criarIdentificadorConta();
+		/* posso chamar um construtor dentro de outro
+		* mas isso pode causar problemas caso os construtores utilizem
+		* atributos de classe
+		*/ 
+		//this(titular); // ao chamar esse construtor o incrementa conta será acionado 
+		// uma vez a mais
 		this.saldo=0;
 		this.limite=0;
-		/*
-		 * esse atributo da Classe irá armazenar a quantidade de instâncias
-		 *	da classe criadas. Para acessa-lo será necessário criar um getter
-		 */
-		Conta.totalDeContas += 1;
 		}
+	/* Esse método static é um metodo de Classe, por isso pode ser usado para controlar
+	 * quantas instâncias estão sendo criadas, se for acionado antes de instanciar
+	 * qualquer objeto sua informação será zero.
+	 * métodos estáticos não necessitam de objetos criados para serem executados
+	 */
+	
+	
+	//metodo usado para criar um identificador unico para cada conta
+	static int criarIdentificadorConta() {
+		int numeroDaConta = idConta;
+		idConta += 1;
+		Conta.totalDeContas += 1;
+		return numeroDaConta;
+	}
 	
 	//MÉTODOS GET/SET
 	
@@ -64,7 +80,7 @@ public class Conta {
 	}
 	
 	public int getNumero() {
-		return this.numero;
+		return this.numeroConta;
 	}
 
 	public Cliente getTitular() {

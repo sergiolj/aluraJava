@@ -13,11 +13,20 @@ public class ContaConstrutores {
 	private Cliente titular;
 	private double saldo;
 	private double limite;
+	private boolean contaConjunta=false;
 
 	
 	//MÉTODOS GET/SET
 	/*não é boa prática criar métodos get/set para todos os atributos da classe
 	 * recem criada, esse tipo de método deve ser criado sob demanda*/
+	
+	/* Em métodos booleanos do tipo get é comum usar is ao invés de get
+	 * deste modo a leitura do código faz mais sentido
+	 */
+	public boolean isContaConjunta() {
+		return contaConjunta;
+	}
+	
 	
 	public int getNumero() {
 		return this.numero;

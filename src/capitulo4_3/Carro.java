@@ -1,4 +1,10 @@
 package capitulo4_3;
+/**
+ * Esse é minha primera documentação referente a um 
+ * algoritmo que eu tenha feito
+ * @author Sérgio Lopes Júnior
+ * @version 1.0
+ */
 
 public class Carro {
 	String cor;
